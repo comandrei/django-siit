@@ -16,9 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from curs.views import salut
+from curs.views import salut, salut_nume
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("salut", salut),
+    path("salut/<int:nume>/", salut_nume)
 ]
