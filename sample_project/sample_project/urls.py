@@ -16,10 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from curs.views import salut, salut_nume
+from curs.views import salut, salut_nume, cursuri, curs
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("salut", salut),
-    path("salut/<int:nume>/", salut_nume)
+    path("salut/<int:nume>/", salut_nume),
+    path("cursuri", cursuri),
+    path("curs/<int:curs_id>", curs),
 ]
