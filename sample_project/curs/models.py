@@ -8,3 +8,5 @@ class Curs(models.Model):
     nume = models.CharField(max_length=30, unique=True)
     creat = models.DateTimeField(auto_now_add=True)
     actualizat = models.DateTimeField(auto_now=True)
+    logo = models.FileField(null=True, blank=True)
+    activ = models.BooleanField(default=True)
