@@ -22,7 +22,7 @@ class Curs(models.Model):
     logo = models.FileField(null=True, blank=True)
     activ = models.BooleanField(default=True)
     profesor = models.ForeignKey(Profesor, on_delete=models.CASCADE)
-    coordonator = models.OneToOneField(Profesor, on_delete=models.CASCADE, related_name="coordonator")
+    coordonator = models.OneToOneField(Profesor, null=True, blank=True, on_delete=models.CASCADE, related_name="coordonator")
 
     def __str__(self):
         return f"{self.nume} {self.profesor}"
