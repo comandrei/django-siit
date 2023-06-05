@@ -10,3 +10,9 @@ class Curs(models.Model):
     actualizat = models.DateTimeField(auto_now=True)
     logo = models.FileField(null=True, blank=True)
     activ = models.BooleanField(default=True)
+
+class Profesor(models.Model):
+    nume = models.CharField(max_length=50)
+    prenume = models.CharField(max_length=50)
+    email = models.EmailField()
+    telefon = models.CharField(max_length=10)
