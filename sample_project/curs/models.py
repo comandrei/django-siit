@@ -4,5 +4,5 @@ from django.db import models
 class Curs(models.Model):
     durata = models.IntegerField(default=80)
     pret = models.FloatField()
-    descriere = models.TextField()
+    descriere = models.TextField(null=True, blank=True)
     nume = models.CharField(max_length=30)
