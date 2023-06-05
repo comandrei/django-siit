@@ -1,6 +1,17 @@
 from django.db import models
 
 # Create your models here.
+
+class Profesor(models.Model):
+    nume = models.CharField(max_length=50)
+    prenume = models.CharField(max_length=50)
+    email = models.EmailField()
+    telefon = models.CharField(max_length=10)
+
+    def __str__(self):
+        return f"{self.nume} {self.prenume} <{self.email}>"
+
+
 class Curs(models.Model):
     durata = models.IntegerField(default=80)
     pret = models.FloatField(db_index=True)
@@ -10,9 +21,7 @@ class Curs(models.Model):
     actualizat = models.DateTimeField(auto_now=True)
     logo = models.FileField(null=True, blank=True)
     activ = models.BooleanField(default=True)
+    profesor = models.ForeignKey(Profesor, on_delete=models.CASCADE)
 
-class Profesor(models.Model):
-    nume = models.CharField(max_length=50)
-    prenume = models.CharField(max_length=50)
-    email = models.EmailField()
-    telefon = models.CharField(max_length=10)
+    def __str__(self):
+        return f"{self.nume} {self.profesor}"
