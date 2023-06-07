@@ -13,7 +13,7 @@ def salut_nume(request, nume):
 def cursuri(request):
     an = request.GET.get("an")
     if an is None:
-        toate_cursurile = Curs.objects.all() # select * from cursuri;
+        toate_cursurile = Curs.objects.all().order_by("-an") # select * from cursuri;
     else:
         toate_cursurile = Curs.objects.filter(an__lte=int(an), nume__contains="Curs")
     nume_cursuri = [f"<a href='/curs/{curs.id}'>{curs.nume} an: {curs.an}</a>" for curs in toate_cursurile]
