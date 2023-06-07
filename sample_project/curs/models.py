@@ -11,7 +11,10 @@ class Profesor(models.Model):
     def __str__(self):
         return f"{self.nume} {self.prenume} <{self.email}>"
 
-
+class CursManager(models.Manager):
+    def an_terminal(self):
+        return self.filter(an=5)
+    
 class Curs(models.Model):
     durata = models.IntegerField(default=80)
     pret = models.FloatField(db_index=True)
@@ -24,6 +27,8 @@ class Curs(models.Model):
     profesor = models.ForeignKey(Profesor, on_delete=models.CASCADE)
     coordonator = models.OneToOneField(Profesor, null=True, blank=True, on_delete=models.CASCADE, related_name="coordonator")
     an = models.IntegerField(default=1)
+
+    objects = CursManager()
 
     def __str__(self):
         return f"{self.nume} {self.profesor}"
