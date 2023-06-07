@@ -36,6 +36,7 @@ class Curs(models.Model):
 class Student(models.Model):
     class Meta:
         ordering = ["prenume", "nume"]
+        unique_together = ("prenume", "nume")
 
     nume = models.CharField(max_length=50)
     prenume = models.CharField(max_length=50)
