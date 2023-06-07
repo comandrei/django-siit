@@ -11,9 +11,15 @@ def salut_nume(request, nume):
     return HttpResponse(f"Salut {nume}!")
 
 def cursuri(request):
-    toate_cursurile = Curs.objects.all() # select * from cursuri;
-    nume_cursuri = [f"<a href='/curs/{curs.id}'>{curs.nume}</a>" for curs in toate_cursurile]
-    return HttpResponse(f"{nume_cursuri}")
+    an = request.GET.get("an")
+    if an is None:
+        toate_cursurile = Curs.objects.all() # select * from cursuri;
+    else:
+        toate_cursurile = Curs.objects.filter(an=int(an))
+    nume_cursuri = [f"<a href='/curs/{curs.id}'>{curs.nume} an: {curs.an}</a>" for curs in toate_cursurile]
+    print(request.GET)
+
+    return HttpResponse(f" <br />{nume_cursuri}")
 
 def curs(request, curs_id):
     try:
