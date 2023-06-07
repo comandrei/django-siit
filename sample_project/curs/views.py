@@ -15,7 +15,7 @@ def cursuri(request):
     if an is None:
         toate_cursurile = Curs.objects.all() # select * from cursuri;
     else:
-        toate_cursurile = Curs.objects.filter(an=int(an))
+        toate_cursurile = Curs.objects.filter(an__lte=int(an), nume__contains="Curs")
     nume_cursuri = [f"<a href='/curs/{curs.id}'>{curs.nume} an: {curs.an}</a>" for curs in toate_cursurile]
     print(request.GET)
 
