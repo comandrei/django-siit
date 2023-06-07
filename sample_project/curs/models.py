@@ -23,6 +23,7 @@ class Curs(models.Model):
     activ = models.BooleanField(default=True)
     profesor = models.ForeignKey(Profesor, on_delete=models.CASCADE)
     coordonator = models.OneToOneField(Profesor, null=True, blank=True, on_delete=models.CASCADE, related_name="coordonator")
+    an = models.IntegerField(default=1)
 
     def __str__(self):
         return f"{self.nume} {self.profesor}"
