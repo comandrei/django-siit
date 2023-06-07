@@ -34,6 +34,9 @@ class Curs(models.Model):
         return f"{self.nume} {self.profesor}"
     
 class Student(models.Model):
+    class Meta:
+        ordering = ["prenume", "nume"]
+
     nume = models.CharField(max_length=50)
     prenume = models.CharField(max_length=50)
     email = models.EmailField()
