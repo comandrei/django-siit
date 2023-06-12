@@ -1,5 +1,6 @@
 FROM python:3.11
-RUN pip install Django==4.2.1
+COPY ./requirements.txt requirements.txt
+RUN pip install -r requirements.txt
 RUN mkdir /app
 COPY sample_project app
 WORKDIR /app

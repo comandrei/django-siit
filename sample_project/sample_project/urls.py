@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 from curs.views import salut, salut_nume, cursuri, curs, studenti
 
@@ -27,6 +27,7 @@ urlpatterns = [
     path("cursuri", cursuri),
     path("curs/<int:curs_id>", curs),
     path("studenti", studenti),
+    path("__debug__/", include("debug_toolbar.urls")),
 ]
 
 if settings.DEBUG:
