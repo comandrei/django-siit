@@ -6,7 +6,7 @@
           <h3>Cursuri</h3>
           <ul>
            {% for curs in student.cursuri.all %}
-              <li>{{ curs }}</li>
+              <li>{{ curs.nume }}</li>
            {% endfor %}
             </ul>
         {% endfor %}
