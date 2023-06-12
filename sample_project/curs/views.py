@@ -30,7 +30,7 @@ def curs(request, curs_id):
         return HttpResponse("Nu exista", status=404)
     
 def studenti(request):
-    studenti = Student.objects.all()
+    studenti = Student.objects.all().prefetch_related("cursuri")
     # for student in studenti:
     #     student.an = student.an + 1
     #     student.save()
