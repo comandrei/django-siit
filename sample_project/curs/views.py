@@ -17,7 +17,7 @@ def cursuri(request):
     toate_cursurile = toate_cursurile.select_related("profesor")
     if an is not None:
         toate_cursurile = toate_cursurile.filter(Q(an__lte=int(an)) | Q(nume__contains="Curs"))
-    
+    toate_cursurile = toate_cursurile.only("nume", "profesor")
     return render(request, "cursuri.html", {"cursuri": toate_cursurile})
 
 def curs(request, curs_id):
