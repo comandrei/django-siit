@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 # Create your views here.
 from .models import Curs, Student
-from django.db.models import Q
+from django.db.models import Q, F
 
 def salut(request):
     unu = 1 
@@ -33,7 +33,8 @@ def curs(request, curs_id):
     
 def studenti(request):
     studenti = Student.objects.all()
-    for student in studenti:
-        student.an = student.an + 1
-        student.save()
-    return HttpResponse("OK")
+    # for student in studenti:
+    #     student.an = student.an + 1
+    #     student.save()
+    studenti.update(an=F('an')+1)
+    return render(request, "curs.html", {})
