@@ -1,0 +1,14 @@
+<html>
+    <body>
+        <h1>Studenti</h1>
+        {% for student in studenti %}
+          <h2>{{ student}} </h2>
+          <h3>Cursuri</h3>
+          <ul>
+           {% for curs in student.cursuri.all %}
+              <li>{{ curs }}</li>
+           {% endfor %}
+            </ul>
+        {% endfor %}
+    </body>
+</html>

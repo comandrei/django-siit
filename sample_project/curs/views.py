@@ -34,5 +34,5 @@ def studenti(request):
     # for student in studenti:
     #     student.an = student.an + 1
     #     student.save()
-    studenti.update(an=F('an')+1)
-    return render(request, "curs.html", {})
+    #studenti.update(an=F('an')+1)
+    return render(request, "studenti.html", {"studenti": studenti})
