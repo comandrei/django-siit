@@ -10,5 +10,11 @@
            {% endfor %}
             </ul>
         {% endfor %}
+
+        {% if user.is_authenticated %}
+            Salut user autentificat {{user.username}}
+        {% else %}
+            Esti neautentificat
+        {% endif %}
     </body>
 </html>
