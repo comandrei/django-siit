@@ -43,6 +43,7 @@ class Student(models.Model):
     email = models.EmailField()
     telefon = models.CharField(max_length=10)
     cursuri = models.ManyToManyField(Curs)
+    an = models.IntegerField(default=1)
 
     def __str__(self):
         return f"{self.prenume} {self.nume}"

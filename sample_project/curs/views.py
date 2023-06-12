@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 # Create your views here.
-from .models import Curs
+from .models import Curs, Student
 from django.db.models import Q
 
 def salut(request):
@@ -30,3 +30,10 @@ def curs(request, curs_id):
                       {"cursul_meu": cursul_meu, "studenti": studenti})
     except Curs.DoesNotExist:
         return HttpResponse("Nu exista", status=404)
+    
+def studenti(request):
+    studenti = Student.objects.all()
+    for student in studenti:
+        student.an = student.an + 1
+        student.save()
+    return HttpResponse("OK")

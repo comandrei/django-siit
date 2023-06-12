@@ -18,7 +18,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 
-from curs.views import salut, salut_nume, cursuri, curs
+from curs.views import salut, salut_nume, cursuri, curs, studenti
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -26,6 +26,7 @@ urlpatterns = [
     path("salut/<int:nume>/", salut_nume),
     path("cursuri", cursuri),
     path("curs/<int:curs_id>", curs),
+    path("studenti", studenti),
 ]
 
 if settings.DEBUG:
