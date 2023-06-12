@@ -26,7 +26,8 @@ def curs(request, curs_id):
         studenti = ["Gigel"]
         studenti = cursul_meu.student_set.all()
         return render(request, "curs.html", 
-                      {"cursul_meu": cursul_meu, "studenti": studenti})
+                      {"cursul_meu": cursul_meu, "studenti": studenti,
+                       "dictionar": {"unu":1, "doi":2}})
     except Curs.DoesNotExist:
         return HttpResponse("Nu exista", status=404)
     
