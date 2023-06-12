@@ -14,9 +14,10 @@ def salut_nume(request, nume):
 def cursuri(request):
     an = request.GET.get("an")
     toate_cursurile = Curs.objects.all().order_by("-an")
+    toate_cursurile = toate_cursurile.select_related("profesor")
     if an is not None:
         toate_cursurile = toate_cursurile.filter(Q(an__lte=int(an)) | Q(nume__contains="Curs"))
-    toate_cursurile = toate_cursurile.select_related("profesor")
+    
     return render(request, "cursuri.html", {"cursuri": toate_cursurile})
 
 def curs(request, curs_id):
