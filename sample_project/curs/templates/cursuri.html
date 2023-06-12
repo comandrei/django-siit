@@ -1,0 +1,15 @@
+<html>
+    <body>
+        <h1>Cursuri</h1>
+        <ul>
+        {% for curs in cursuri %}
+            <li>
+                <a href="/curs/{{curs.id}}">
+                    {{ curs }}
+                </a>
+            </li>
+        {% endfor %}
+        </ul>
+
+    </body>
+</html>
