@@ -5,7 +5,8 @@
         {% for curs in cursuri %}
             <li>
                 <a href="/curs/{{curs.id}}">
-                    {{ curs }}
+                    {{ curs.nume }} 
+                    {{ curs.profesor.nume }}
                 </a>
             </li>
         {% endfor %}
