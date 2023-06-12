@@ -1,18 +1,35 @@
 <html>
+    <head>
+        <style type="text/css">
+            td {
+                border:2px solid black;
+            }
+            .row1 {
+                background-color: grey;
+            }
+            .row2 {
+                background-color: white;
+            }
+        </style>
+    </head>
     <body>
         <h1>Studenti</h1>
         {% for student in studenti %}
           <h2>{{ student}} </h2>
           <h3>Cursuri</h3>
-          <ul>
+          <table>
            {% for curs in student.cursuri.all %}
-              <li>{{ curs.nume }}</li>
+              <tr class="{% cycle 'row1' 'row2' %}">
+                <td>
+                    {{ curs.nume }}
+                </td>
+              </tr>
            {% endfor %}
-            </ul>
+          </table>
         {% endfor %}
 
         {% if user.is_authenticated %}
-            Salut user autentificat {{user.username}}
+            Salut user autentificat {{ user.username | capfirst }}
         {% else %}
             Esti neautentificat
         {% endif %}
