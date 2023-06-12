@@ -21,6 +21,7 @@ from django.urls import path, include
 from curs.views import salut, salut_nume, cursuri, curs, studenti
 
 urlpatterns = [
+    path('grappelli/', include('grappelli.urls')), # grappelli URLS
     path("admin/", admin.site.urls),
     path("salut", salut),
     path("salut/<int:nume>/", salut_nume),
