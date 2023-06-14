@@ -1,4 +1,4 @@
-
+{% load static %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -9,7 +9,7 @@
     <title>{% block "titlu"%} SIIT {% endblock %}</title>
     <!-- Bootstrap core CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/static/css/siit.css" rel="stylesheet" />
+    <link href="{% static 'css/siit.css' %}" rel="stylesheet" />
   </head>
 
   <body>
