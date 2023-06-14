@@ -38,3 +38,6 @@ def studenti(request):
     #     student.save()
     #studenti.update(an=F('an')+1)
     return render(request, "studenti.html", {"studenti": studenti})
+
+def main(request):
+    return render(request, "main.html", {})

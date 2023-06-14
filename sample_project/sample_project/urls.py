@@ -18,7 +18,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
-from curs.views import salut, salut_nume, cursuri, curs, studenti
+from curs.views import salut, salut_nume, cursuri, curs, studenti, main
 
 urlpatterns = [
     path('grappelli/', include('grappelli.urls')), # grappelli URLS
@@ -29,6 +29,7 @@ urlpatterns = [
     path("curs/<int:curs_id>", curs),
     path("studenti", studenti),
     path("__debug__/", include("debug_toolbar.urls")),
+    path("", main),
 ]
 
 if settings.DEBUG:
