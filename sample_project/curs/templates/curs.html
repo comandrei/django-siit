@@ -1,16 +1,19 @@
-<!DOCTYPE html>
-<html>
-    <body>
-        {{cursul_meu.nume}} <br /> 
-        {{cursul_meu.pret}} <br /> 
-        {{cursul_meu.descriere}} <br /> 
+{% extends "base.html" %}
+{% block "content" %}
+    <h1>{{cursul_meu.nume}}</h1> 
+        Pret: {{cursul_meu.pret}} <br /> 
+        Descriere: {{cursul_meu.descriere}} <br /> 
         {{cursul_meu.creat}} <br /> 
         {{cursul_meu.actualizat}} <br />
         {{cursul_meu.profesor}}
-        <h1>Studenti</h1>
-        {{ studenti }}
-        <h2>Dictionar</h2>
-         {{ dictionar.unu }}
-         {{ dictionar.trei }}
-    </body>
-</html>
+        <h2>Studenti</h2>
+        <ol>
+        {% for student in studenti %}
+          <li>{{ student }}</li>
+          {% empty %} <li>Nu sunt studenti inscrisi la acest curs.</li>
+        {% endfor %}
+        </ol>
+       
+
+{% endblock %}
+         
