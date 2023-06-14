@@ -18,10 +18,4 @@
           </table>
         </div>
         {% endfor %}
- 
-        {% if user.is_authenticated %}
-            Salut user autentificat {{ user.username | capfirst }}
-        {% else %}
-            Esti neautentificat
-        {% endif %}
 {% endblock %}

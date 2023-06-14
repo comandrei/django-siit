@@ -68,6 +68,13 @@ code {
               <a class="nav-link" href="/studenti">Studenti</a>
             </li>
           </ul>
+          <div class="pull-right" style="color:white">
+            {% if user.is_authenticated %}
+                Salut  {{ user.username | capfirst }}!
+            {% else %}
+                Esti neautentificat!
+            {% endif %}
+          </div>
         </div>
       </nav>
     </header>
