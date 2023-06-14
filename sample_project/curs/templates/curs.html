@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load humanize %}
 {% block "content" %}
-    <h1>{{cursul_meu.nume}}</h1> 
+    <h1 class="mt-5">{{cursul_meu.nume}}</h1> 
         Pret: {{cursul_meu.pret |intcomma }} <br /> 
         Descriere: {{cursul_meu.descriere}} <br /> 
         Creat: {{cursul_meu.creat| naturaltime }} <br /> 
