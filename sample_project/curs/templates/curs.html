@@ -1,10 +1,11 @@
 {% extends "base.html" %}
+{% load humanize %}
 {% block "content" %}
     <h1>{{cursul_meu.nume}}</h1> 
-        Pret: {{cursul_meu.pret}} <br /> 
+        Pret: {{cursul_meu.pret |intcomma }} <br /> 
         Descriere: {{cursul_meu.descriere}} <br /> 
-        {{cursul_meu.creat}} <br /> 
-        {{cursul_meu.actualizat}} <br />
+        Creat: {{cursul_meu.creat| naturaltime }} <br /> 
+        Actualizat: {{cursul_meu.actualizat| naturaltime }} <br />
         {{cursul_meu.profesor}}
         <h2>Studenti</h2>
         <ol>
