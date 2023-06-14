@@ -1,5 +1,5 @@
-<html>
-    <body>
+{% extends "base.html" %}
+{% block "content" %}
         <h1>Cursuri</h1>
         <ul>
         {% for curs in cursuri %}
@@ -11,6 +11,4 @@
             </li>
         {% endfor %}
         </ul>
-
-    </body>
-</html>
+{% endblock %}
