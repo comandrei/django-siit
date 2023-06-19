@@ -47,7 +47,17 @@ def profil(request):
     return render(request, "profil.html", {})
 
 def contact(request):
+    if request.method == "POST":
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            mesaj = "Formular validat"
+        else:
+            mesaj = "Formular invalid"
+    else:
+        form = ContactForm()
+        mesaj = ""
     context = {
-        "form": ContactForm()
+        "form": form,
+        "mesaj": mesaj
     }
     return render(request, "contact.html", context)
