@@ -13,8 +13,8 @@ class ContactForm(forms.Form):
         return nume
 
     def clean(self):
-        nume = self.cleaned_data["nume"]
-        email = self.cleaned_data["email"]
+        nume = self.cleaned_data.get("nume", "")
+        email = self.cleaned_data.get("email", "")
         if nume not in email:
             raise ValidationError("Numele trebuie sa apara in email")
         return self.cleaned_data
