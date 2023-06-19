@@ -3,8 +3,8 @@
 <h1 class="mt-5">Contact</h1>
 <form method="POST">
     {% csrf_token %}
-    Nume: <input type="text" name="numele_tau" /> <br />
-    Email: <input type="email" name="mail" /><br />
+    Nume: <input type="text" name="numele_tau" required /> <br />
+    Email: <input type="email" name="mail" placeholder="introdu emailul aici ..."/><br />
     Mesaj: <textarea row="50" cols="25" name="mesaj"></textarea> <br />
     Parola: <input type="password" name="pass" /> <br />
     Checkbox: <input type="checkbox" /> <br />
