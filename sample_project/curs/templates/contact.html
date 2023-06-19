@@ -26,7 +26,15 @@
 
 <form method="POST">
     {% csrf_token %}
+    {% comment %}
     {{ form.as_p }}
+    {% endcomment %}
+
+    {{ form.errors }}
+    {% for field in form %}
+       {{ field.errors }}
+       {{ field.label }}: {{ field }} <br />
+    {% endfor %}
     <input type="submit" value="Trimite" />
 </form>
 Stare formular: {{ mesaj }}
