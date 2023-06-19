@@ -25,3 +25,5 @@ class ProfesorForm(forms.ModelForm):
     class Meta:
         model = Profesor
         fields = "__all__"
+    #telefon = forms.CharField(widget=forms.PasswordInput)
+    #activ = forms.BooleanField()

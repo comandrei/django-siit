@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 # Create your views here.
-from .models import Curs, Student
+from .models import Curs, Student, Profesor
 from django.db.models import Q, F
+from django.shortcuts import get_object_or_404
 from .forms import ContactForm, ProfesorForm
 
 def salut(request):
@@ -73,3 +74,16 @@ def add_profesor(request):
         "form": form
     }
     return render(request, "add_profesor.html", context)
+
+def edit_profesor(request, profesor_id):
+    profesor = get_object_or_404(Profesor, id=profesor_id)
+    if request.method == "POST":
+        form = ProfesorForm(data=request.POST, instance=profesor)
+        if form.is_valid():
+            form.save()
+    else:
+        form = ProfesorForm(instance=profesor)
+    context = {
+        "form": form
+    }
+    return render(request, "edit_profesor.html", context)
