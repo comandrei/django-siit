@@ -3,7 +3,7 @@ from django.http import HttpResponse
 # Create your views here.
 from .models import Curs, Student
 from django.db.models import Q, F
-from .forms import ContactForm
+from .forms import ContactForm, ProfesorForm
 
 def salut(request):
     unu = 1 
@@ -61,3 +61,15 @@ def contact(request):
         "mesaj": mesaj
     }
     return render(request, "contact.html", context)
+
+def add_profesor(request):
+    if request.method == "POST":
+        form = ProfesorForm(request.POST)
+        if form.is_valid():
+            form.save()
+    else:
+        form = ProfesorForm()
+    context = {
+        "form": form
+    }
+    return render(request, "add_profesor.html", context)

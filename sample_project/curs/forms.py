@@ -1,6 +1,8 @@
 from django import forms
 from django.core.exceptions import ValidationError
 
+from .models import Profesor
+
 class ContactForm(forms.Form):
     nume = forms.CharField(required=True)
     email = forms.EmailField()
@@ -18,3 +20,8 @@ class ContactForm(forms.Form):
         if nume not in email:
             raise ValidationError("Numele trebuie sa apara in email")
         return self.cleaned_data
+
+class ProfesorForm(forms.ModelForm):
+    class Meta:
+        model = Profesor
+        fields = "__all__"
