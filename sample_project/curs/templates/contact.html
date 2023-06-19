@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block "content" %}
 <h1 class="mt-5">Contact</h1>
+{% comment %}
 <form method="POST">
     {% csrf_token %}
     Nume: <input type="text" name="numele_tau" required /> <br />
@@ -21,4 +22,9 @@
 
 <h1>GET Data</h1>
 {{ request.GET }}
+{% endcomment %}
+
+
+{{ form.as_p }}
+
 {% endblock "content"%}

@@ -3,6 +3,7 @@ from django.http import HttpResponse
 # Create your views here.
 from .models import Curs, Student
 from django.db.models import Q, F
+from .forms import ContactForm
 
 def salut(request):
     unu = 1 
@@ -46,4 +47,7 @@ def profil(request):
     return render(request, "profil.html", {})
 
 def contact(request):
-    return render(request, "contact.html", {})
+    context = {
+        "form": ContactForm()
+    }
+    return render(request, "contact.html", context)
