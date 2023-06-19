@@ -1,4 +1,17 @@
 {% extends "base.html" %}
 {% block "content" %}
 <h1 class="mt-5">Contact</h1>
+<form method="POST">
+    {% csrf_token %}
+    Nume: <input type="text" name="numele_tau" /> <br />
+    Email: <input type="email" name="mail" /><br />
+    Mesaj: <textarea row="50" cols="25" name="mesaj"></textarea>
+    <input type="submit" value="Trimite!" />
+
+</form>
+<h1>POST Data</h1>
+{{ request.POST }}
+
+<h1>GET Data</h1>
+{{ request.GET }}
 {% endblock "content"%}
