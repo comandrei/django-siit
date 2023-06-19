@@ -19,7 +19,7 @@ from django.contrib import admin
 from django.contrib.staticfiles import views
 from django.urls import re_path, path, include
 
-from curs.views import salut, salut_nume, cursuri, curs, studenti, main, profil
+from curs.views import salut, salut_nume, cursuri, curs, studenti, main, profil, contact
 
 urlpatterns = [
     path('grappelli/', include('grappelli.urls')), # grappelli URLS
@@ -31,6 +31,7 @@ urlpatterns = [
     path("studenti", studenti),
     path("__debug__/", include("debug_toolbar.urls")),
     path("profil", profil),
+    path("contact", contact),
     path("", main),
 ]
 

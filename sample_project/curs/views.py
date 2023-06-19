@@ -44,3 +44,6 @@ def main(request):
 
 def profil(request):
     return render(request, "profil.html", {})
+
+def contact(request):
+    return render(request, "contact.html", {})
