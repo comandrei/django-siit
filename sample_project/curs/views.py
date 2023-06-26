@@ -90,13 +90,14 @@ def edit_profesor(request, profesor_id):
 
 
 def add_student(request):
+    profesor = request.GET.get("profesor")
     if request.method == "POST":
-        form = StudentForm(request.POST)
+        form = StudentForm(request.POST, filter_prof=profesor)
         if form.is_valid():
             student = form.save()
             return redirect("/students/")
     else:
-        form = StudentForm()
+        form = StudentForm(filter_prof=profesor)
     context = {
         "form": form
     }

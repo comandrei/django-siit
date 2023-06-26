@@ -36,8 +36,9 @@ class StudentForm(forms.ModelForm):
         exclude = []
     
     def __init__(self, *args, **kwargs):
+        nume_profesor = kwargs.pop("filter_prof")
         super().__init__(*args, **kwargs)
-        self.fields["cursuri"].queryset = Curs.objects.filter(profesor__nume="Ionescu")
+        self.fields["cursuri"].queryset = Curs.objects.filter(profesor__nume=nume_profesor)
 
 
         
