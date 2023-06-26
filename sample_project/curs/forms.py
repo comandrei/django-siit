@@ -38,7 +38,11 @@ class StudentForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         nume_profesor = kwargs.pop("filter_prof")
         super().__init__(*args, **kwargs)
-        self.fields["cursuri"].queryset = Curs.objects.filter(profesor__nume=nume_profesor)
+        if nume_profesor is not None:
+            curs_qs = Curs.objects.filter(profesor__nume=nume_profesor)
+        else:
+            curs_qs = Curs.objects.all()
+        self.fields["cursuri"].queryset = curs_qs
 
 
         
