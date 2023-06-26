@@ -1,7 +1,7 @@
 from django import forms
 from django.core.exceptions import ValidationError
 
-from .models import Profesor, Student
+from .models import Profesor, Student, Curs
 
 class ContactForm(forms.Form):
     nume = forms.CharField(required=True)
@@ -34,3 +34,11 @@ class StudentForm(forms.ModelForm):
     class Meta:
         model = Student
         exclude = []
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["cursuri"].queryset = Curs.objects.filter(profesor__nume="Ionescu")
+
+
+        
+
