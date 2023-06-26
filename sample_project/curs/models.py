@@ -3,6 +3,9 @@ from django.db import models
 # Create your models here.
 
 class Profesor(models.Model):
+    class Meta:
+        verbose_name_plural = "profesori"
+
     nume = models.CharField(max_length=50)
     prenume = models.CharField(max_length=50)
     email = models.EmailField()
@@ -16,6 +19,9 @@ class CursManager(models.Manager):
         return self.filter(an=5)
     
 class Curs(models.Model):
+    class Meta:
+        verbose_name_plural = "cursuri"
+
     durata = models.IntegerField(default=80)
     pret = models.FloatField(db_index=True)
     descriere = models.TextField(null=True, blank=True)
@@ -37,6 +43,7 @@ class Student(models.Model):
     class Meta:
         ordering = ["prenume", "nume"]
         unique_together = ("prenume", "nume")
+        verbose_name_plural = "studenti"
 
     nume = models.CharField(max_length=50)
     prenume = models.CharField(max_length=50)
