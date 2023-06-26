@@ -1,10 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 # Create your views here.
 from .models import Curs, Student, Profesor
 from django.db.models import Q, F
 from django.shortcuts import get_object_or_404
-from .forms import ContactForm, ProfesorForm
+from .forms import ContactForm, ProfesorForm, StudentForm
 
 def salut(request):
     unu = 1 
@@ -87,3 +87,17 @@ def edit_profesor(request, profesor_id):
         "form": form
     }
     return render(request, "edit_profesor.html", context)
+
+
+def add_student(request):
+    if request.method == "POST":
+        form = StudentForm(request.POST)
+        if form.is_valid():
+            student = form.save()
+            return redirect("/students/")
+    else:
+        form = StudentForm()
+    context = {
+        "form": form
+    }
+    return render(request, "add_student.html", context)
