@@ -131,6 +131,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 MEDIA_ROOT = "/app/media/"
 MEDIA_URL = "uploads/"
 
+LOGIN_URL = "/login"
 
 if DEBUG:
     import socket  # only if you haven't already imported this

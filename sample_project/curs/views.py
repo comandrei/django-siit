@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 from .models import Curs, Student, Profesor
 from django.db.models import Q, F
@@ -14,6 +15,7 @@ def salut(request):
 def salut_nume(request, nume):
     return HttpResponse(f"Salut {nume}!")
 
+@login_required
 def cursuri(request):
     an = request.GET.get("an")
     toate_cursurile = Curs.objects.all().order_by("-an")
@@ -23,6 +25,7 @@ def cursuri(request):
     toate_cursurile = toate_cursurile.only("nume", "profesor")
     return render(request, "cursuri.html", {"cursuri": toate_cursurile})
 
+@login_required
 def curs(request, curs_id):
     try:
         cursul_meu = Curs.objects.get(id=curs_id)
@@ -34,6 +37,7 @@ def curs(request, curs_id):
     except Curs.DoesNotExist:
         return HttpResponse("Nu exista", status=404)
     
+@login_required
 def studenti(request):
     studenti = Student.objects.all().prefetch_related("cursuri")
     # for student in studenti:
@@ -89,7 +93,7 @@ def edit_profesor(request, profesor_id):
     }
     return render(request, "edit_profesor.html", context)
 
-
+@login_required
 def add_student(request):
     profesor = request.GET.get("profesor")
     if request.method == "POST":
