@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
 # Create your views here.
 from .models import Curs, Student, Profesor
@@ -120,3 +120,7 @@ def login_view(request):
         "form": form
     }
     return render(request, "login.html", context)
+
+def logout_view(request):
+    logout(request)
+    return redirect("/")

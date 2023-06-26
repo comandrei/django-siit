@@ -36,6 +36,7 @@
           <div class="pull-right" style="color:white">
             {% if user.is_authenticated %}
                 Salut  {{ user.username | capfirst }}!
+                <a href="/logout">Logout</a>
             {% else %}
                 Esti neautentificat!
             {% endif %}
