@@ -44,6 +44,8 @@ class StudentForm(forms.ModelForm):
             curs_qs = Curs.objects.all()
         self.fields["cursuri"].queryset = curs_qs
 
+class LoginForm(forms.Form):
+    username = forms.CharField(max_length=50)
+    password = forms.CharField(max_length=100, widget=forms.PasswordInput)
 
-        
 

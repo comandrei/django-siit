@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
 # Create your views here.
 from .models import Curs, Student, Profesor
 from django.db.models import Q, F
 from django.shortcuts import get_object_or_404
-from .forms import ContactForm, ProfesorForm, StudentForm
+from .forms import ContactForm, LoginForm, ProfesorForm, StudentForm
 
 def salut(request):
     unu = 1 
@@ -102,3 +103,9 @@ def add_student(request):
         "form": form
     }
     return render(request, "add_student.html", context)
+
+def login_view(request):
+    context = {
+        "form": LoginForm()
+    }
+    return render(request, "login.html", context)
