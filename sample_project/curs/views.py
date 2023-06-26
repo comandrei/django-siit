@@ -105,7 +105,18 @@ def add_student(request):
     return render(request, "add_student.html", context)
 
 def login_view(request):
+    if request.method == "POST":
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data["username"]
+            password = form.cleaned_data["password"]
+            user = authenticate(request, username=username, password=password)
+            if user:
+                login(request, user)
+                return redirect("/")
+    else:
+        form = LoginForm()
     context = {
-        "form": LoginForm()
+        "form": form
     }
     return render(request, "login.html", context)
