@@ -2,6 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 from .models import Curs, Profesor, Student
+from django.db.models import F
 
 class CursAdmin(admin.ModelAdmin):
     list_display = ("nume", "an", "profesor", "activ")
@@ -12,7 +13,17 @@ class CursAdmin(admin.ModelAdmin):
 admin.site.register(Curs, CursAdmin)
 admin.site.register(Profesor)
 
+def trecere_an(modeladmin, request, queryset):
+    queryset.update(an=F('an') + 1)
+    # for student in queryset:
+    #     student.an = student.an + 1
+    #     student.save()
+    return
+
+def inca_o_actiune(*args, **kwargs):
+    return
 class StudentAdmin(admin.ModelAdmin):
     list_display = ("prenume", "nume", "an")
+    actions = (trecere_an, inca_o_actiune)
 
 admin.site.register(Student, StudentAdmin)
