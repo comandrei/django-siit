@@ -26,8 +26,13 @@ def inca_o_actiune(*args, **kwargs):
 class StudentAdmin(admin.ModelAdmin):
     list_display = ("prenume", "nume", "an")
     list_display_links = ("prenume", "nume")
-    list_per_page = 10
+    list_per_page = 3
     change_list_template = "admin/student_change_list.html"
     actions = (trecere_an, inca_o_actiune)
+    fieldsets = [
+        ("", {"fields": ["nume", "prenume"]}),
+        ("Date Contact", {"fields": ["email", "telefon"]}),
+        ("Cursuri", {"fields": ["cursuri"]})
+    ]
 
 admin.site.register(Student, StudentAdmin)
