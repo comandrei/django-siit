@@ -22,8 +22,10 @@ def trecere_an(modeladmin, request, queryset):
 
 def inca_o_actiune(*args, **kwargs):
     return
+
 class StudentAdmin(admin.ModelAdmin):
     list_display = ("prenume", "nume", "an")
+    list_per_page = 10
     actions = (trecere_an, inca_o_actiune)
 
 admin.site.register(Student, StudentAdmin)
