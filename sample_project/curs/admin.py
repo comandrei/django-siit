@@ -11,4 +11,8 @@ class CursAdmin(admin.ModelAdmin):
 
 admin.site.register(Curs, CursAdmin)
 admin.site.register(Profesor)
-admin.site.register(Student)
+
+class StudentAdmin(admin.ModelAdmin):
+    list_display = ("prenume", "nume", "an")
+
+admin.site.register(Student, StudentAdmin)
