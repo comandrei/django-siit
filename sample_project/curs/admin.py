@@ -3,6 +3,7 @@ from django.contrib import admin
 # Register your models here.
 from .models import Curs, Profesor, Student
 from django.db.models import F
+from .forms import StudentAdminForm
 
 class CursAdmin(admin.ModelAdmin):
     list_display = ("nume", "an", "profesor", "activ")
@@ -31,8 +32,9 @@ class StudentAdmin(admin.ModelAdmin):
     actions = (trecere_an, inca_o_actiune)
     fieldsets = [
         ("", {"fields": ["nume", "prenume"]}),
-        ("Date Contact", {"fields": ["email", "telefon"]}),
+        ("Date Contact", {"fields": ["email", "telefon"], "classes": ("collapse", )}),
         ("Cursuri", {"fields": ["cursuri"]})
     ]
+    form = StudentAdminForm
 
 admin.site.register(Student, StudentAdmin)

@@ -49,3 +49,12 @@ class LoginForm(forms.Form):
     password = forms.CharField(max_length=100, widget=forms.PasswordInput)
 
 
+class StudentAdminForm(forms.ModelForm):
+    class Meta:
+        model = Student
+        fields = "__all__"
+
+    def clean_email(self):
+        email = self.cleaned_data["email"]
+        if not email.endswith("@scoalainformala.ro"):
+            raise ValidationError("Nu permitem decat email-uri de la scoalainformala.ro")
