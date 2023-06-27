@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Curs, Profesor, Student
+from .models import Curs, Profesor, Student, Intrebare, Raspuns
 from django.db.models import F
 from .forms import StudentAdminForm
 
@@ -38,3 +38,5 @@ class StudentAdmin(admin.ModelAdmin):
     form = StudentAdminForm
 
 admin.site.register(Student, StudentAdmin)
+admin.site.register(Intrebare)
+admin.site.register(Raspuns)

@@ -54,3 +54,18 @@ class Student(models.Model):
 
     def __str__(self):
         return f"{self.prenume} {self.nume}"
+
+
+class Intrebare(models.Model):
+    class Meta:
+        verbose_name_plural = "intrebari"
+
+    text = models.CharField(max_length=150)
+
+class Raspuns(models.Model):
+    class Meta:
+        verbose_name_plural = "raspunsuri"
+
+    intrebare = models.ForeignKey(Intrebare, on_delete=models.CASCADE)
+    text = models.CharField(max_length=150)
+    corect = models.BooleanField(default=False)
