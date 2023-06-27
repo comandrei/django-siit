@@ -25,7 +25,9 @@ def inca_o_actiune(*args, **kwargs):
 
 class StudentAdmin(admin.ModelAdmin):
     list_display = ("prenume", "nume", "an")
+    list_display_links = ("prenume", "nume")
     list_per_page = 10
+    change_list_template = "admin/student_change_list.html"
     actions = (trecere_an, inca_o_actiune)
 
 admin.site.register(Student, StudentAdmin)
