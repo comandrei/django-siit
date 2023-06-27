@@ -62,6 +62,9 @@ class Intrebare(models.Model):
 
     text = models.CharField(max_length=150)
 
+    def __str__(self):
+        return f"<Intrebare> {self.text}"
+
 class Raspuns(models.Model):
     class Meta:
         verbose_name_plural = "raspunsuri"

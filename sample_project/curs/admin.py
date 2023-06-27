@@ -39,4 +39,9 @@ class StudentAdmin(admin.ModelAdmin):
 
 admin.site.register(Student, StudentAdmin)
 admin.site.register(Intrebare)
-admin.site.register(Raspuns)
+
+class RaspunsAdmin(admin.ModelAdmin):
+    list_display = ("text", "corect", "intrebare")
+    list_filter = ("intrebare", "corect")
+
+admin.site.register(Raspuns, RaspunsAdmin)
