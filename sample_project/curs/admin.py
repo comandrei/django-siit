@@ -42,6 +42,7 @@ admin.site.register(Student, StudentAdmin)
 class RaspunsInline(admin.TabularInline):
     model = Raspuns
     extra = 1
+    can_delete = False
 
 class IntrebareAdmin(admin.ModelAdmin):
     inlines = (RaspunsInline, )
