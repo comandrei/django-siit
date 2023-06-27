@@ -38,7 +38,15 @@ class StudentAdmin(admin.ModelAdmin):
     form = StudentAdminForm
 
 admin.site.register(Student, StudentAdmin)
-admin.site.register(Intrebare)
+
+class RaspunsInline(admin.TabularInline):
+    model = Raspuns
+    extra = 1
+
+class IntrebareAdmin(admin.ModelAdmin):
+    inlines = (RaspunsInline, )
+
+admin.site.register(Intrebare, IntrebareAdmin)
 
 class RaspunsAdmin(admin.ModelAdmin):
     list_display = ("text", "corect", "intrebare")
