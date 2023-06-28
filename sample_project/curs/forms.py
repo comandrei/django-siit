@@ -58,3 +58,4 @@ class StudentAdminForm(forms.ModelForm):
         email = self.cleaned_data["email"]
         if not email.endswith("@scoalainformala.ro"):
             raise ValidationError("Nu permitem decat email-uri de la scoalainformala.ro")
+        return email

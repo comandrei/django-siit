@@ -1,4 +1,6 @@
 from django.contrib import admin
+from django.db.models.query import QuerySet
+from django.http.request import HttpRequest
 
 # Register your models here.
 from .models import Curs, Profesor, Student, Intrebare, Raspuns
@@ -33,9 +35,16 @@ class StudentAdmin(admin.ModelAdmin):
     fieldsets = [
         ("", {"fields": ["nume", "prenume"]}),
         ("Date Contact", {"fields": ["email", "telefon"], "classes": ("collapse", )}),
-        ("Cursuri", {"fields": ["cursuri"]})
+        ("Cursuri", {"fields": ["cursuri", "an"]})
     ]
     form = StudentAdminForm
+
+    def get_queryset(self, request: HttpRequest) -> QuerySet:
+        qs = super().get_queryset(request)
+        if request.user.is_superuser:
+            return qs.filter(an__gte=8)
+        else:
+            return qs.none()
 
 admin.site.register(Student, StudentAdmin)
 
