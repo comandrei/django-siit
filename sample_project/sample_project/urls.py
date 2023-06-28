@@ -20,7 +20,7 @@ from django.contrib.staticfiles import views
 from django.urls import re_path, path, include
 
 from curs.views import salut, salut_nume, cursuri, curs, studenti, main, profil, contact, add_profesor, edit_profesor, add_student, login_view
-from curs.views import logout_view
+from curs.views import logout_view, api_view, client_app
 
 urlpatterns = [
     path('grappelli/', include('grappelli.urls')), # grappelli URLS
@@ -38,6 +38,8 @@ urlpatterns = [
     path("profesor/<int:profesor_id>/edit", edit_profesor),
     path("login", login_view),
     path("logout", logout_view),
+    path("api/", api_view),
+    path("client/", client_app),
     path("", main),
 ]
 

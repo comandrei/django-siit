@@ -1,0 +1,26 @@
+<html>
+    <body>
+        <h1>Lista utilizatori</h1>
+        <ul id="users">
+
+        </ul>
+        <script>
+            //fetch("http://localhost:8000/api").then(res => res.json())
+            async function getData() {
+                let response = await fetch("http://localhost:8000/api/");
+                let data = await response.json();
+                let users = document.getElementById("users");
+                let text = "";
+                for(let i=0; i<data.length;i++){
+                    let nume = data[i].nume;
+                    if(nume !== "Dorel"){
+                        text+= "<li>"+nume+"</li>";
+                    }
+                }
+                users.innerHTML = text;
+                console.log(data)
+            }
+            getData();
+        </script>
+    </body>
+</html>
