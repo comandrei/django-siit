@@ -1,8 +1,8 @@
-from rest_framework.serializers import ModelSerializer
+from rest_framework.serializers import HyperlinkedModelSerializer
 
 from .models import Curs
 
-class CursSerializer(ModelSerializer):
+class CursSerializer(HyperlinkedModelSerializer):
     class Meta:
         model = Curs
-        fields = "__all__"
+        fields = ["nume", "durata", "pret"]
