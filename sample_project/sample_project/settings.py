@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.humanize",
+    "corsheaders",
     "curs",
     "debug_toolbar",
     "rest_framework"
@@ -47,12 +48,14 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "debug_toolbar.middleware.DebugToolbarMiddleware",
+   
 ]
 
 ROOT_URLCONF = "sample_project.urls"
@@ -133,6 +136,8 @@ MEDIA_ROOT = "/app/media/"
 MEDIA_URL = "uploads/"
 
 LOGIN_URL = "/login"
+
+CORS_ALLOW_ALL_ORIGINS = True
 
 if DEBUG:
     import socket  # only if you haven't already imported this
