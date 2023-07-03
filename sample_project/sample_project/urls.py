@@ -39,9 +39,9 @@ urlpatterns = [
     path("profesor/<int:profesor_id>/edit", edit_profesor),
     path("login", login_view),
     path("logout", logout_view),
-    path("api/", api_view),
+    path("api_test/", api_view),
     path("client/", client_app),
-    path("drf/", include(router.urls)),
+    path("api/", include(router.urls)),
     path("", main),
 ]
 
