@@ -9,13 +9,13 @@ class CursSerializer(ModelSerializer):
 
 
 class TodoSerializer(ModelSerializer):
-    camp_dinamic = SerializerMethodField()
+    feedback = SerializerMethodField()
 
     class Meta:
         model = Todo
         fields = "__all__"
 
-    def get_camp_dinamic(self, obj):
-        return obj.id ** 2
+    def get_feedback(self, obj):
+        return f"Feedback pentru {obj.title}"
 
     
