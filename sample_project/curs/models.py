@@ -72,3 +72,9 @@ class Raspuns(models.Model):
     intrebare = models.ForeignKey(Intrebare, on_delete=models.CASCADE)
     text = models.CharField(max_length=150)
     corect = models.BooleanField(default=False)
+
+
+class Todo(models.Model):
+    title = models.CharField(max_length=100)
+    description = models.TextField()
+    completed = models.BooleanField(default=False)

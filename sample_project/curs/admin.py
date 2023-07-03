@@ -3,9 +3,12 @@ from django.db.models.query import QuerySet
 from django.http.request import HttpRequest
 
 # Register your models here.
-from .models import Curs, Profesor, Student, Intrebare, Raspuns
+from .models import Curs, Profesor, Student, Intrebare, Raspuns, Todo
 from django.db.models import F
 from .forms import StudentAdminForm
+
+admin.site.register(Todo)
+
 
 class CursAdmin(admin.ModelAdmin):
     list_display = ("nume", "an", "profesor", "activ")
