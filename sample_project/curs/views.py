@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.cache import cache_page
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
+from django.core.cache import cache
 
 # Create your views here.
 from .models import Curs, Student, Profesor
@@ -141,12 +142,24 @@ def logout_view(request):
     logout(request)
     return redirect("/")
 
+def generare_nume():
+    import time; time.sleep(3)
+    return "Georgel"
+
 def api_view(request):
-    raspuns = [
-        {"nume": "Dorel"},
-        {"nume": "Ionel"},
-        {"nume": "Georgel"}
-    ]
+    raspuns = cache.get("api_view")
+    if raspuns:
+        raspuns["cache"] = "HIT"
+    else:
+        raspuns = {
+            "nume": generare_nume()
+        }
+        raspuns["cache"] = "MISS"
+        cache.set("api_view", raspuns, 30)
+
+    # User speficic customizations
+    raspuns["username"] = request.user.username
+
     return HttpResponse(json.dumps(raspuns),
                         content_type="application/json")
 
