@@ -29,8 +29,14 @@ def cursuri(request):
 
 @login_required
 def curs(request, curs_id):
+    if "cos" not in request.session:
+        request.session["cos"] = []
     try:
         cursul_meu = Curs.objects.get(id=curs_id)
+        # request.session["cos"].append(cursul_meu.nume)
+        cursuri = request.session["cos"]
+        cursuri.append(cursul_meu.nume)
+        request.session["cos"] = cursuri
         studenti = ["Gigel"]
         studenti = cursul_meu.student_set.all()
         return render(request, "curs.html", 
@@ -41,6 +47,7 @@ def curs(request, curs_id):
     
 @login_required
 def studenti(request):
+    request.session["students_view"] = request.session.get("students_view", 0) + 1
     studenti = Student.objects.all().prefetch_related("cursuri")
     # for student in studenti:
     #     student.an = student.an + 1
