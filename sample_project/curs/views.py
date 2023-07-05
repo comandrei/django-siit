@@ -2,8 +2,10 @@ import json
 
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
+from django.views.decorators.cache import cache_page
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 from .models import Curs, Student, Profesor
 from django.db.models import Q, F
@@ -17,6 +19,7 @@ def salut(request):
 def salut_nume(request, nume):
     return HttpResponse(f"Salut {nume}!")
 
+@cache_page(30)
 @login_required
 def cursuri(request):
     an = request.GET.get("an")
