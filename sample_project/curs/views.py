@@ -49,10 +49,13 @@ def curs(request, curs_id):
     except Curs.DoesNotExist:
         return HttpResponse("Nu exista", status=404)
     
-@login_required
+#@login_required
 def studenti(request):
     request.session["students_view"] = request.session.get("students_view", 0) + 1
-    studenti = Student.objects.all().prefetch_related("cursuri")
+    studenti = cache.get("studenti")
+    if studenti is None:  
+        studenti = Student.objects.all().prefetch_related("cursuri")
+        cache.set("studenti", studenti, 30)
     # for student in studenti:
     #     student.an = student.an + 1
     #     student.save()
