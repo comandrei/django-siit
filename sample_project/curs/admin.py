@@ -45,7 +45,7 @@ class StudentAdmin(admin.ModelAdmin):
     def get_queryset(self, request: HttpRequest) -> QuerySet:
         qs = super().get_queryset(request)
         if request.user.is_superuser:
-            return qs.filter(an__gte=8)
+            return qs#.filter(an__gte=8)
         else:
             return qs.none()
 
