@@ -69,10 +69,12 @@ def profil(request):
     return render(request, "profil.html", {})
 
 def contact(request):
+    text = ""
     if request.method == "POST":
         form = ContactForm(request.POST)
         if form.is_valid():
             mesaj = "Formular validat"
+            text = form.cleaned_data["mesaj"]
         else:
             mesaj = "Formular invalid"
     else:
@@ -80,7 +82,8 @@ def contact(request):
         mesaj = ""
     context = {
         "form": form,
-        "mesaj": mesaj
+        "mesaj": mesaj,
+        "text": text
     }
     return render(request, "contact.html", context)
 
