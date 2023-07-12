@@ -36,7 +36,13 @@ def curs(request, curs_id):
     if "cos" not in request.session:
         request.session["cos"] = []
     try:
-        cursul_meu = Curs.objects.get(id=curs_id)
+        #cursul_meu = Curs.objects.get(id=curs_id)
+        curs_id = request.GET["curs_id"]
+        # try:
+        #     curs_id = int(curs_id)
+        # except ValueError:
+        #     return HttpResponse("ceau", status=400)
+        cursul_meu = Curs.objects.raw(f"SELECT * FROM curs_curs where id={curs_id}")[0]
         # request.session["cos"].append(cursul_meu.nume)
         cursuri = request.session["cos"]
         cursuri.append(cursul_meu.nume)
