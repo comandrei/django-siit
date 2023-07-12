@@ -39,7 +39,9 @@
 </form>
 Stare formular: {{ mesaj }}
 <h1>Mesaj din formular</h1>
+{% autoescape off %}
 <div>
-    {{ text | safe}}
+    {{ text }}
 </div>
+{% endautoescape %}
 {% endblock "content"%}
