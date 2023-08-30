@@ -3,3 +3,5 @@ django-debug-toolbar==4.1.0
 django-grappelli==3.0.6
 djangorestframework==3.14.0
 django-cors-headers==4.1.0
+django-extensions==3.2.3
+pygraphviz==1.11
